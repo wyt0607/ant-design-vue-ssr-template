@@ -1,12 +1,13 @@
 'use strict'
 const utils = require('./utils')
-const isProduction = process.env.NODE_ENV === 'production'
-const sourceMapEnabled = isProduction ? false : true
+const isProd = process.env.NODE_ENV === 'production'
+
+const sourceMapEnabled = isProd ? false : true
 
 module.exports = {
     loaders: utils.cssLoaders({
         sourceMap: sourceMapEnabled,
-        extract: isProduction
+        extract: isProd
     }),
     cssSourceMap: sourceMapEnabled,
     cacheBusting: true,

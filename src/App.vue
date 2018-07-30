@@ -1,20 +1,14 @@
 <template>
-    <div>你好123</div>
+    <div id="app">
+        <router-view></router-view>
+    </div>
 </template>
 
 <script>
+
     export default {
         name: "App",
-        methods:{
-
-        }
+        methods: {}
     }
+
 </script>
-
-<style lang="scss" scoped>
-    .demo {
-        .demo-1 {
-            background: red;
-        }
-    }
-</style>

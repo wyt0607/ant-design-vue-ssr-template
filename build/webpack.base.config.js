@@ -1,18 +1,29 @@
-const webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const {VueLoaderPlugin} = require('vue-loader')
-const utils = require('./utils')
-const vueLoaderConfig = require('./vue-loader.conf')
-const styleLoaders = utils.styleLoaders();
 const path = require('path')
+const utils = require('./utils')
+const webpack = require('webpack')
+const {VueLoaderPlugin} = require('vue-loader')
+const vueLoaderConfig = require('./vue-loader.conf')
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+
+const isProd = process.env.NODE_ENV === 'production'
+
+const styleLoaders = utils.styleLoaders({sourceMap: !isProd, extract: isProd});
+
 module.exports = {
-    mode: 'production',
+
+    mode: process.env.NODE_ENV,
+    devtool: isProd
+        ? false
+        : '#cheap-module-source-map',
     output: {
         path: path.resolve(__dirname, '../dist'),
         publicPath: '/dist/',
-        filename: '[name].[chunkhash].js'
+        filename: '[name].js',
+        chunkFilename: '[name].js'
     },
     module: {
+        noParse: /es6-promise\.js$/, // avoid webpack shimming process
         rules: [
             ...styleLoaders,
             {
@@ -51,11 +62,15 @@ module.exports = {
             }
         ],
     },
-    plugins: [
+    plugins: isProd ? [
         new VueLoaderPlugin(),
         new webpack.optimize.ModuleConcatenationPlugin(),
         new ExtractTextPlugin({
-            filename: 'common.[chunkhash].css'
+            filename: 'common.css',
+            allChunks: true
         })
+    ] : [
+        new VueLoaderPlugin(),
+        new FriendlyErrorsPlugin()
     ]
 };

@@ -1,6 +1,6 @@
+const path = require("path")
 const postcssPresetEnv = require('postcss-preset-env');
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const path = require("path")
 
 exports.assetsPath = function (_path) {
     return path.posix.join("static", _path)
@@ -52,7 +52,7 @@ exports.cssLoaders = function (options) {
     return {
         css: generateLoaders(),
         postcss: generateLoaders(),
-        less: generateLoaders('less'),
+        less: generateLoaders('less', {javascriptEnabled: true}),
         sass: generateLoaders('sass', {indentedSyntax: true}),
         scss: generateLoaders('sass'),
         stylus: generateLoaders('stylus'),

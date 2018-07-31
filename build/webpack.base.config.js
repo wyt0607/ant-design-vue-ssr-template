@@ -8,7 +8,7 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
 
-const styleLoaders = utils.styleLoaders({sourceMap: !isProd, extract: isProd});
+const styleLoaders = utils.styleLoaders({sourceMap: !isProd, extract: isProd, usePostCSS: true});
 
 module.exports = {
 
@@ -30,6 +30,10 @@ module.exports = {
                 test: /\.vue$/,
                 loader: 'vue-loader',
                 options: vueLoaderConfig
+            },
+            {
+                resourceQuery: /blockType=i18n/,
+                loader: '@kazupon/vue-i18n-loader'
             },
             {
                 test: /\.js$/,

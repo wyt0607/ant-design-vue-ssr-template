@@ -1,4 +1,5 @@
 const path = require("path")
+const postcssPxtorem = require('postcss-pxtorem');
 const postcssPresetEnv = require('postcss-preset-env');
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
@@ -23,7 +24,15 @@ exports.cssLoaders = function (options) {
             sourceMap: options.sourceMap,
             ident: 'postcss',
             plugins: () => [
-                postcssPresetEnv(/* options */)
+                postcssPresetEnv({
+                    browsers: 'last 3 versions'
+                }),
+                postcssPxtorem({
+                    rootValue: 16,
+                    propList: ['*'],
+                    mediaQuery: true,
+                    replace: true
+                })
             ]
         }
     }
@@ -59,6 +68,7 @@ exports.cssLoaders = function (options) {
         styl: generateLoaders('stylus')
     }
 }
+
 exports.styleLoaders = function (options) {
     const output = []
     const loaders = exports.cssLoaders(options)

@@ -1,14 +1,17 @@
 import Vue from 'vue'
 import App from './App.vue'
+import Antd from 'vue-antd-ui'
+import {sync} from 'vuex-router-sync'
+import {createI18n} from "./i18n/i18n";
 import {createStore} from './store/store'
 import {createRouter} from './router/router'
-import {sync} from 'vuex-router-sync'
-import Antd from 'vue-antd-ui'
 import "./less/custom.less"
 
 Vue.use(Antd)
 
+
 export function createApp() {
+    const i18n = createI18n()
     const router = createRouter()
     const store = createStore()
 
@@ -16,6 +19,7 @@ export function createApp() {
     sync(store, router)
 
     const app = new Vue({
+        i18n,
         router,
         store,
         render: h => h(App)

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import my from './module/my'
 Vue.use(Vuex)
 
 // 假定我们有一个可以返回 Promise 的
@@ -8,6 +8,8 @@ Vue.use(Vuex)
 
 export function createStore() {
     return new Vuex.Store({
-        state: {}
+       modules:{
+           my
+       }
     })
 }

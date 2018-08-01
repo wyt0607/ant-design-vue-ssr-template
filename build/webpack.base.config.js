@@ -3,6 +3,7 @@ const utils = require('./utils')
 const webpack = require('webpack')
 const {VueLoaderPlugin} = require('vue-loader')
 const vueLoaderConfig = require('./vue-loader.conf')
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
@@ -72,9 +73,19 @@ module.exports = {
         new ExtractTextPlugin({
             filename: 'common.css',
             allChunks: true
-        })
+        }),
+        /*  new MiniCssExtractPlugin({
+              filename: "[name].css",
+              chunkFilename: "[id].css"
+          }),*/
+        new webpack.DefinePlugin({
+            'process.env': require('../config/prod.env')
+        }),
     ] : [
         new VueLoaderPlugin(),
-        new FriendlyErrorsPlugin()
+        new FriendlyErrorsPlugin(),
+        new webpack.DefinePlugin({
+            'process.env': require('../config/dev.env')
+        })
     ]
 };

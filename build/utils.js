@@ -1,7 +1,8 @@
 const path = require("path")
 const postcssPxtorem = require('postcss-pxtorem');
 const postcssPresetEnv = require('postcss-preset-env');
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 exports.assetsPath = function (_path) {
     return path.posix.join("static", _path)
@@ -49,10 +50,11 @@ exports.cssLoaders = function (options) {
         }
 
         if (options.extract) {
-            return ExtractTextPlugin.extract({
-                use: loaders,
-                fallback: 'vue-style-loader'
-            })
+              return ExtractTextPlugin.extract({
+                  use: loaders,
+                  fallback: 'vue-style-loader'
+              })
+            // return [MiniCssExtractPlugin.loader].concat(loaders)
         } else {
             return ['vue-style-loader'].concat(loaders)
         }

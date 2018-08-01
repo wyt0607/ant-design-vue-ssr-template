@@ -52,7 +52,7 @@ if (isProd) {
     )
 }
 
-function render (req, res) {
+function render(req, res) {
     const s = Date.now()
 
     res.setHeader("Content-Type", "text/html")
@@ -61,7 +61,7 @@ function render (req, res) {
     const handleError = err => {
         if (err.url) {
             res.redirect(err.url)
-        } else if(err.code === 404) {
+        } else if (err.code === 404) {
             res.status(404).send('404 | Page Not Found')
         } else {
             // Render Error Page or Redirect
@@ -90,7 +90,7 @@ const serve = (path, cache) => express.static(resolve(path), {
     maxAge: cache && isProd ? 1000 * 60 * 60 * 24 * 30 : 0
 })
 
-app.use(compression({ threshold: 0 }))
+app.use(compression({threshold: 0}))
 // app.use(favicon('./public/logo-48.png'))
 app.use('/dist', serve('./dist', true))
 app.use('/public', serve('./public', true))

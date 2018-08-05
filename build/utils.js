@@ -50,10 +50,10 @@ exports.cssLoaders = function (options) {
         }
 
         if (options.extract) {
-              return ExtractTextPlugin.extract({
-                  use: loaders,
-                  fallback: 'vue-style-loader'
-              })
+            return ExtractTextPlugin.extract({
+                use: loaders,
+                fallback: 'vue-style-loader'
+            })
             // return [MiniCssExtractPlugin.loader].concat(loaders)
         } else {
             return ['vue-style-loader'].concat(loaders)
@@ -63,7 +63,14 @@ exports.cssLoaders = function (options) {
     return {
         css: generateLoaders(),
         postcss: generateLoaders(),
-        less: generateLoaders('less', {javascriptEnabled: true}),
+        less: generateLoaders('less', {
+            javascriptEnabled: true/*,
+            modifyVars: {
+                "theme": {
+                    "primary-color": "#3a4ba5"
+                }
+            }*/
+        }),
         sass: generateLoaders('sass', {indentedSyntax: true}),
         scss: generateLoaders('sass'),
         stylus: generateLoaders('stylus'),

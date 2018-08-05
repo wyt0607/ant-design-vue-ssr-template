@@ -1,16 +1,17 @@
 import Vue from 'vue'
 import App from './App.vue'
-import Antd from 'vue-antd-ui'
+// import Antd from 'vue-antd-ui'
 import axios from 'axios'
 import {sync} from 'vuex-router-sync'
 import {createI18n} from "./i18n/i18n";
 import {createStore} from './store/store'
 import {createRouter} from './router/router'
-import "./less/custom.less"
+import './globalRegister'
+// import "./less/custom.less"
 
 Vue.prototype.$axios = axios
 
-Vue.use(Antd)
+// Vue.use(Antd)
 
 // Vue.config.productionTip = false
 

@@ -1,3 +1,8 @@
+/**
+ *  常用组件, 全局注册
+ *
+ * */
+
 import Vue from 'vue'
 import {Row, Col, Layout} from '../node_modules/ant-design-vue/es'
 

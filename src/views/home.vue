@@ -4,6 +4,7 @@
             <a-layout-header>
                 <a-row>
                     <a-col>
+                        {{ $t('hello') }}
                         <a-calendar @panelChange="onPanelChange"/>
                     </a-col>
                 </a-row>
@@ -29,16 +30,26 @@
         </a-layout>
     </div>
 </template>
+<!--
+<i18n>
+    en:
+        hello: "hello world!"
+    ja:
+        hello: "こんにちは、世界！"
+    zh_CN:
+        hello: "你好世界"
+</i18n>
+-->
 <i18n>
     {
-    "en": {
-    "hello": "hello world!"
+    en:{
+    hello: "hello world!"
     },
-    "ja": {
-    "hello": "こんにちは、世界!"
+    ja:{
+    hello: "こんにちは、世界！"
     },
-    "zh_CN": {
-    "hello": "你好世界!"
+    zh_CN:{
+    hello: "你好世界"
     }
     }
 </i18n>

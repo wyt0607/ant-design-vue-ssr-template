@@ -33,6 +33,12 @@ module.exports = {
                 loader: 'vue-loader',
                 options: vueLoaderConfig
             },
+            // i18n yaml
+            /*{
+                resourceQuery: /blockType=i18n/,
+                loader: ['@kazupon/vue-i18n-loader', 'yaml-loader']
+            },*/
+            // i18n json
             {
                 resourceQuery: /blockType=i18n/,
                 loader: '@kazupon/vue-i18n-loader'

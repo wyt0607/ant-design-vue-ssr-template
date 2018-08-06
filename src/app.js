@@ -16,7 +16,7 @@ Vue.prototype.$axios = axios
 // Vue.config.productionTip = false
 
 export function createApp() {
-    const i18n = createI18n()
+    const i18n = createI18n("ja")
     const router = createRouter()
     const store = createStore()
 

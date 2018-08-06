@@ -1,9 +1,11 @@
 <template>
     <div id="home">
         <a-layout>
-            <a-layout-header style="background:#b6b4ba;opacity: .3">
+            <a-layout-header>
                 <a-row>
-                    <a-col style="height: 500px;background:#55b3ff;"></a-col>
+                    <a-col>
+                        <a-calendar @panelChange="onPanelChange"/>
+                    </a-col>
                 </a-row>
             </a-layout-header>
             <a-layout-content style="padding: 0 300px;">
@@ -41,14 +43,22 @@
     }
 </i18n>
 <script>
+    import {Calendar} from "../../node_modules/ant-design-vue/es"
+
     export default {
         name: "home",
+        components: {
+            aCalendar: Calendar
+        },
         methods: {
             onShowSizeChange() {
 
             },
             test() {
                 this.$i18n.locale = "en"
+            },
+            onPanelChange(e) {
+                console.log(e);
             }
         },
         mounted() {
@@ -66,9 +76,10 @@
 </script>
 
 <style lang="less" scoped>
+    @test: 10px;
 
     .test {
-        height: 100px;
+        height: @test;
         width: 100px;
         background: red
     }

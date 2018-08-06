@@ -6,6 +6,7 @@ const vueLoaderConfig = require('./vue-loader.conf')
 // const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -74,6 +75,7 @@ module.exports = {
             filename: 'common.css',
             allChunks: true
         }),
+        new CleanWebpackPlugin(['dist']),
         /*  new MiniCssExtractPlugin({
               filename: "[name].css",
               chunkFilename: "[id].css"

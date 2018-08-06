@@ -11,7 +11,8 @@ module.exports = merge(baseConfig, {
     entry: './src/entry-client.js',
     optimization: {
         splitChunks: {
-            chunks: "async",
+            // chunks: "async",
+            chunks: "all",
             minSize: 30000,
             minChunks: 1,
             maxAsyncRequests: 5,
@@ -22,6 +23,9 @@ module.exports = merge(baseConfig, {
                 vendors: {
                     test: /[\\/]node_modules[\\/]/,
                     priority: -10
+                },
+                ant: {
+                    test: /[\\/]node_modules[\\/]ant-design-vue[\\/]/
                 },
                 default: {
                     minChunks: 2,

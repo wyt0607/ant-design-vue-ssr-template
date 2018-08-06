@@ -3,6 +3,7 @@ const postcssPxtorem = require('postcss-pxtorem');
 const postcssPresetEnv = require('postcss-preset-env');
 // const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const modifyVars = require("../src/less/modifyVars")
 
 exports.assetsPath = function (_path) {
     return path.posix.join("static", _path)
@@ -64,12 +65,8 @@ exports.cssLoaders = function (options) {
         css: generateLoaders(),
         postcss: generateLoaders(),
         less: generateLoaders('less', {
-            javascriptEnabled: true/*,
-            modifyVars: {
-                "theme": {
-                    "primary-color": "#3a4ba5"
-                }
-            }*/
+            javascriptEnabled: true,
+            modifyVars: modifyVars
         }),
         sass: generateLoaders('sass', {indentedSyntax: true}),
         scss: generateLoaders('sass'),

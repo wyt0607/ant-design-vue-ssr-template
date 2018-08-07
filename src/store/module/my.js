@@ -6,10 +6,10 @@ export default {
     },
     actions: {
         FETCH_DATA({commit}) {
-            axios.get(process.env.SERVER_URL + '/menus/all').then(response => {
+            /*axios.get(process.env.SERVER_URL + '/menus/all').then(response => {
                 let {data} = response.data
                 commit("SET_DATA", data)
-            })
+            })*/
         }
     },
     mutations: {

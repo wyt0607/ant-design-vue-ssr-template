@@ -4,15 +4,19 @@
             <a-layout-header>
                 <a-row>
                     <a-col>
-                        {{ $t('hello') }}
-                        <a-calendar @panelChange="onPanelChange"/>
+
                     </a-col>
                 </a-row>
             </a-layout-header>
             <a-layout-content style="padding: 0 300px;">
 
                 <a-row style="margin-top: 30px">
-                    <a-col :span="8" style="height: 500px;background:#ff8f27;"></a-col>
+                    <a-col :span="8" style="height: 500px;background:#ff8f27;">
+                        <a-button @click="test('zh_CN')">中文</a-button>
+                        <a-button @click="test('en')">英文</a-button>
+                        <a-button @click="test('ja')">日语</a-button>
+                        {{ $t('hello') }} {{ $t('msg') }}
+                    </a-col>
                     <a-col :span="16" style="height: 500px;background:#55b3ff;"></a-col>
                 </a-row>
                 <a-row style="margin-top: 30px">
@@ -42,31 +46,36 @@
 -->
 <i18n>
     {
-    en:{
-    hello: "hello world!"
+    "en":{
+    "hello": "hello world!"
     },
-    ja:{
-    hello: "こんにちは、世界！"
+    "ja":{
+    "hello": "こんにちは、世界！"
     },
-    zh_CN:{
-    hello: "你好世界"
+    "zh_CN":{
+    "hello": "你好世界",
+    "msg": "覆盖一下!!!"
     }
     }
 </i18n>
 <script>
-    import {Calendar} from "../../node_modules/ant-design-vue/es"
+    import {Calendar, Button} from "../../node_modules/ant-design-vue/es"
 
     export default {
         name: "home",
         components: {
-            aCalendar: Calendar
+            AButton: Button,
+            ACalendar: Calendar
         },
         methods: {
             onShowSizeChange() {
 
             },
-            test() {
-                this.$i18n.locale = "en"
+            test(locale) {
+                /* 切换根节点的i18n*/
+                this.$root.$i18n.locale = locale
+                /*切换此节点的i18n*/
+                this.$i18n.locale = locale
             },
             onPanelChange(e) {
                 console.log(e);

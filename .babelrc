@@ -11,16 +11,18 @@
     "transform-react-inline-elements",
     [
       "import",
-      {
-        "libraryName": "../../node_modules/ant-design-vue/es",
-        "libraryDirectory": "",
-        "style": true
-      },
-      {
-        "libraryName": "../node_modules/ant-design-vue/es",
-        "libraryDirectory": "",
-        "style": true
-      }
+      [
+        {
+          "libraryName": "../node_modules/ant-design-vue/es",
+          "libraryDirectory": "",
+          "style": true
+        },
+        {
+          "libraryName": "../../node_modules/ant-design-vue/es",
+          "libraryDirectory": "",
+          "style": true
+        }
+      ]
     ]
   ]
 }

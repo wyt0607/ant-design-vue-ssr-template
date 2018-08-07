@@ -24,9 +24,9 @@ module.exports = merge(baseConfig, {
                     test: /[\\/]node_modules[\\/]/,
                     priority: -10
                 },
-                ant: {
-                    test: /[\\/]node_modules[\\/]ant-design-vue[\\/]/
-                },
+                /*  ant: {
+                      test: /[\\/]node_modules[\\/]ant-design-vue[\\/]/
+                  },*/
                 default: {
                     minChunks: 2,
                     priority: -20,

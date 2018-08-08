@@ -3,8 +3,7 @@ const utils = require('./utils')
 const webpack = require('webpack')
 const {VueLoaderPlugin} = require('vue-loader')
 const vueLoaderConfig = require('./vue-loader.conf')
-// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 
@@ -77,15 +76,11 @@ module.exports = {
     plugins: isProd ? [
         new VueLoaderPlugin(),
         new webpack.optimize.ModuleConcatenationPlugin(),
-        new ExtractTextPlugin({
-            filename: 'common.css',
-            allChunks: true
-        }),
         new CleanWebpackPlugin(['dist']),
-        /*  new MiniCssExtractPlugin({
-              filename: "[name].css",
-              chunkFilename: "[id].css"
-          }),*/
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+            chunkFilename: "[id].css"
+        }),
         new webpack.DefinePlugin({
             'process.env': require('../config/prod.env')
         }),

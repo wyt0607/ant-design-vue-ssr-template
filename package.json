@@ -39,6 +39,7 @@
     "clean-webpack-plugin": "^0.1.19",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
+    "file-loader": "^1.1.11",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "less": "^3.8.0",
     "less-loader": "^4.1.0",
